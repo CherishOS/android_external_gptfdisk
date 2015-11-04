@@ -103,3 +103,20 @@ cc_library_static {
 
     shared_libs: ["libext2_uuid"],
 }
+
+cc_library {
+    name: "libsgdisk",
+    recovery_available: true,
+
+    defaults: ["gptfdisk_default_flags"],
+
+    srcs: [
+        "sgdisk.cc",
+    ],
+    cflags: [
+        "-Dmain=sgdisk_main",
+    ],
+
+    shared_libs: ["libext2_uuid"],
+    static_libs: ["libgptf"],
+}
